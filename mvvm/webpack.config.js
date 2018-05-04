@@ -3,14 +3,14 @@ const htmlWebpackPlugin = require('html-webpack-plugin');
 const cleanPlugin = require('clean-webpack-plugin');
 module.exports = {
   entry: {
-    app: './src/index.js',
-    print: './src/print.js'
+    app: './src/index.js'
   },
   devtool: 'inline-source-map',
   plugins: [
     new cleanPlugin(['dist']),  //每次打包时清理之前的dist文件夹下生成的文件
     new htmlWebpackPlugin({ //自动生成入口文件
-      title: 'output mangement'
+      title: 'webPack San',
+      template: 'index.html'
     })
   ],
   output: {
@@ -25,6 +25,12 @@ module.exports = {
           'style-loader',
           'css-loader'
         ]
+      },
+      {
+        test: /\.san$/,
+        use: [
+            'san-loader'
+          ]
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
